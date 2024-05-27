@@ -1,3 +1,4 @@
+import 'package:firebase_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class PostItemWidget extends StatelessWidget {
@@ -57,9 +58,9 @@ class PostItemWidget extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      const Text(
-                        '2 min ago',
-                        style: TextStyle(
+                      Text(
+                        S.of(context).time,
+                        style: const TextStyle(
                           color: Colors.black54,
                           fontSize: 12,
                           fontWeight: FontWeight.w400,

@@ -1,4 +1,5 @@
 import 'package:firebase_app/features/authentication/presentation/pages/login.dart';
+import 'package:firebase_app/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -11,9 +12,10 @@ class MyAppbar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(
         children: [
-          const Text(
-            'Welcome',
-            style: TextStyle(
+          Text(
+            S.of(context).title,
+            //   'Welcome',
+            style: const TextStyle(
               fontSize: 22,
               color: Colors.red,
               fontWeight: FontWeight.w800,

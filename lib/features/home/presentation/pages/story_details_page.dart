@@ -51,7 +51,7 @@ class StoryDetailPageState extends State<StoryDetailPage>
               ),
             ),
             Positioned(
-              top: 30,
+              top: 40,
               left: 0,
               right: 0,
               child: Padding(

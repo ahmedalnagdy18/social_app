@@ -1,3 +1,4 @@
+import 'package:firebase_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class StoryUser extends StatelessWidget {
@@ -69,7 +70,7 @@ class AddStoryButton extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 4),
-            const Text('Add'),
+            Text(S.of(context).add),
           ],
         ),
       ),

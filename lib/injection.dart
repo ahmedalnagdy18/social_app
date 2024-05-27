@@ -5,6 +5,7 @@ import 'package:firebase_app/features/authentication/presentation/cubit/auth_cub
 import 'package:firebase_app/features/home/data/data_source/data_source.dart';
 import 'package:firebase_app/features/home/data/data_source/remote_data_source.dart';
 import 'package:firebase_app/features/home/data/repositories/repository_imp.dart';
+import 'package:firebase_app/features/home/presentation/lang_cubit/locale_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 GetIt injector = GetIt.instance;
@@ -21,4 +22,7 @@ void setupinjection() {
 
   injector.registerSingleton<RepositoryImp>(RepositoryImp(
       dataSource: TimelineRemoteDataSource(dataSource: FirebaseDataSource())));
+
+  //! Lang cubit
+  injector.registerFactory(() => LocaleCubit());
 }

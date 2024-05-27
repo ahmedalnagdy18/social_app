@@ -1,0 +1,14 @@
+{
+    "title": "Welcome",
+    "add": "Add",
+    "posts": "Posts",
+    "home": "Home",
+    "setting": "Setting",
+    "time": "2 min ago",
+    "language": "Language",
+    "changeLang": "change Language",
+    "theme": "Theme",
+    "changeColor": "Change Color",
+    "logout": "Logout",
+    "logoutFromApp": "Logout from the app"
+}

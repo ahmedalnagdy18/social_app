@@ -1,4 +1,5 @@
 import 'package:bottom_navbar_with_indicator/bottom_navbar_with_indicator.dart';
+import 'package:firebase_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigationBarWidget extends StatelessWidget {
@@ -19,12 +20,12 @@ class BottomNavigationBarWidget extends StatelessWidget {
       indicatorType: IndicatorType.top,
       customBottomBarItems: [
         CustomBottomBarItems(
-          label: 'Home',
+          label: S.of(context).home,
           icon: Icons.home_max_outlined,
         ),
         CustomBottomBarItems(icon: Icons.add, label: ''),
         CustomBottomBarItems(
-          label: 'Setting',
+          label: S.of(context).setting,
           icon: Icons.settings,
         ),
       ],

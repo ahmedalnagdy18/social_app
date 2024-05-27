@@ -4,6 +4,7 @@ import 'package:firebase_app/features/home/presentation/pages/story_details_page
 import 'package:firebase_app/features/home/presentation/widgets/app_bar.dart';
 import 'package:firebase_app/features/home/presentation/widgets/listview_body.dart';
 import 'package:firebase_app/features/home/presentation/widgets/post_item.dart';
+import 'package:firebase_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class TimelinePage extends StatefulWidget {
@@ -90,15 +91,16 @@ class _TimelinePageState extends State<TimelinePage> {
                   ),
                 ),
                 const SizedBox(height: 30),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    'Posts',
-                    style: TextStyle(
+                    S.of(context).posts,
+                    style: const TextStyle(
                       fontSize: 18,
                       color: Colors.red,
                       fontWeight: FontWeight.w600,
                     ),
+                    // overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 Padding(

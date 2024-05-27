@@ -1,4 +1,6 @@
+import 'package:firebase_app/features/home/presentation/pages/lang_setting_page.dart';
 import 'package:firebase_app/features/home/presentation/widgets/setting_widget.dart';
+import 'package:firebase_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class SettingPage extends StatelessWidget {
@@ -11,39 +13,43 @@ class SettingPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: const Text(
-          'Setting',
-          style: TextStyle(
+        title: Text(
+          S.of(context).setting,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
             color: Colors.red,
           ),
         ),
       ),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(vertical: 25, horizontal: 25),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SettingWidget(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const LangSettingsPage()));
+                },
                 icon: Icons.language_outlined,
-                title: 'Language',
-                subtitle: 'Change Language',
+                title: S.of(context).language,
+                subtitle: S.of(context).changeLang,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               SettingWidget(
                 icon: Icons.color_lens_outlined,
-                title: 'Theme',
-                subtitle: 'Change color',
+                title: S.of(context).theme,
+                subtitle: S.of(context).changeColor,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               SettingWidget(
                 icon: Icons.logout,
-                title: 'Logout',
-                subtitle: 'Logout from the app ',
+                title: S.of(context).logout,
+                subtitle: S.of(context).logoutFromApp,
               ),
             ],
           ),
