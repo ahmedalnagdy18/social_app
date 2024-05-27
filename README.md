@@ -6,7 +6,7 @@ A new Flutter project.
 
 ### Description
 
-This Social App is developed using the Firebase platform and the Flutter framework. The app employs the BLoC (Business Logic Component) state management pattern, adhering to clean code and clean architecture principles. It leverages shared preferences for local storage and includes several key features, such as authentication and localization.
+This Social App is developed using the Firebase platform and the Flutter framework. The app employs the BLoC (Business Logic Component) state management pattern, adhering to clean code and clean architecture principles. It leverages shared preferences for local storage and includes several key features, such as authentication and localization, and users can add and delete posts and stories.
 
 ### Features
 
@@ -15,6 +15,7 @@ This Social App is developed using the Firebase platform and the Flutter framewo
 - **State Management**: Using BLoC, the app ensures a predictable state, making the code more maintainable and scalable.
 - **Clean Architecture**: The project is structured following clean architecture principles, promoting separation of concerns and making the codebase easy to test and extend.
 - **Shared Preferences**: Local storage is managed using shared preferences, providing a smooth and efficient user experience.
+- **Timeline**: Users can add and delete posts and stories 
 
 ### Screenshots
 
