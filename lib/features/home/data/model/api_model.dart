@@ -1,18 +1,28 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_app/features/home/domain/entites/entity.dart';
+class ApiPostModel {
+  final String description;
+  final String url;
+  final String time;
 
-class ApiModel extends Entity {
-  ApiModel({
-    required super.url,
-    super.description,
-    super.id,
-  });
+  ApiPostModel(
+      {required this.description, required this.url, required this.time});
 
-  factory ApiModel.fromSnapshot(DocumentSnapshot map) {
-    return ApiModel(
-      id: map.id,
-      url: map.get('url'),
-      description: map.get('description'),
+  factory ApiPostModel.fromFirestore(Map<String, dynamic> data) {
+    return ApiPostModel(
+      description: data['description'] ?? '',
+      url: data['url'] ?? '',
+      time: data['time'] ?? '',
+    );
+  }
+}
+
+class ApiStoryModel {
+  final String url;
+
+  ApiStoryModel({required this.url});
+
+  factory ApiStoryModel.fromFirestore(Map<String, dynamic> data) {
+    return ApiStoryModel(
+      url: data['url'] ?? '',
     );
   }
 }

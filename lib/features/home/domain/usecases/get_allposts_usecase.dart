@@ -1,11 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_app/features/home/data/model/api_model.dart';
 import 'package:firebase_app/features/home/domain/repositories/repository.dart';
 
-class GetAllPostsUsecase {
-  Repository repository;
+class GetPostsUseCase {
+  final PostRepository repository;
 
-  GetAllPostsUsecase({required this.repository});
-  Future<Stream<QuerySnapshot<Object?>>> call() async {
-    return repository.getAllPost();
+  GetPostsUseCase({required this.repository});
+
+  Stream<List<ApiPostModel>> call() {
+    return repository.getPosts();
   }
 }
