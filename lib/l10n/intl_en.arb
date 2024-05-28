@@ -15,5 +15,8 @@
     "createDescribtion": "You can created a post click on the create post button to create your post",
     "describtion": "Describtion*",
     "post": "Post",
-    "snakBar": "Please add both an image and description"
+    "snakBar": "Please add both an image and description",
+    "langSnakBar": "Language changed successfully",
+    "dropdown1": "AR",
+    "dropdown2": "EN"
 }

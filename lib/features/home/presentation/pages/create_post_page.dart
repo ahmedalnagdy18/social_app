@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:firebase_app/features/home/presentation/pages/main_page.dart';
 import 'package:firebase_app/generated/l10n.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:intl/intl.dart';
 import 'package:path/path.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -75,6 +76,7 @@ class CreatePageBody extends StatefulWidget {
 
 class _CreatePageBodyState extends State<CreatePageBody> {
   final TextEditingController describtion = TextEditingController();
+  DateTime currentTime = DateTime.now();
   File? file;
   String? url;
   getImage() async {
@@ -96,10 +98,16 @@ class _CreatePageBodyState extends State<CreatePageBody> {
 
   @override
   Widget build(BuildContext context) {
+    DateFormat dateFormat = DateFormat('d MMMM, hh:mm a');
+    String formattedDate = dateFormat.format(currentTime);
     CollectionReference posts = FirebaseFirestore.instance.collection('posts');
 
     Future<void> addPosts() {
-      return posts.add({'Describtion': describtion.text, 'url': url ?? "none"});
+      return posts.add({
+        'Describtion': describtion.text,
+        'url': url ?? "none",
+        'time': formattedDate,
+      });
     }
 
     MediaQueryData queryData;

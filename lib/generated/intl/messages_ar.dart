@@ -29,7 +29,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "يمكنك إنشاء منشور بالضغط على زر إنشاء المنشور لإنشاء منشورك."),
         "createPost": MessageLookupByLibrary.simpleMessage("انشــاء منشور"),
         "describtion": MessageLookupByLibrary.simpleMessage("الوصــــف*"),
+        "dropdown1": MessageLookupByLibrary.simpleMessage("عربي"),
+        "dropdown2": MessageLookupByLibrary.simpleMessage("English"),
         "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+        "langSnakBar":
+            MessageLookupByLibrary.simpleMessage("تم تغيير اللغة بنجاح"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "logoutFromApp":

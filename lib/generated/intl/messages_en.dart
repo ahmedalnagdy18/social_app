@@ -29,7 +29,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "You can created a post click on the create post button to create your post"),
         "createPost": MessageLookupByLibrary.simpleMessage("Create post"),
         "describtion": MessageLookupByLibrary.simpleMessage("Describtion*"),
+        "dropdown1": MessageLookupByLibrary.simpleMessage("AR"),
+        "dropdown2": MessageLookupByLibrary.simpleMessage("EN"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "langSnakBar": MessageLookupByLibrary.simpleMessage(
+            "Language changed successfully"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "logoutFromApp":

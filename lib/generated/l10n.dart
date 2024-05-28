@@ -219,6 +219,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Language changed successfully`
+  String get langSnakBar {
+    return Intl.message(
+      'Language changed successfully',
+      name: 'langSnakBar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AR`
+  String get dropdown1 {
+    return Intl.message(
+      'AR',
+      name: 'dropdown1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EN`
+  String get dropdown2 {
+    return Intl.message(
+      'EN',
+      name: 'dropdown2',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

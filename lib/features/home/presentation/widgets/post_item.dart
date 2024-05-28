@@ -1,19 +1,21 @@
-import 'package:firebase_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class PostItemWidget extends StatelessWidget {
-  const PostItemWidget(
-      {super.key,
-      required this.username,
-      required this.favicon,
-      required this.favonPressed,
-      required this.bookicon,
-      required this.bookonPressed,
-      required this.describtion,
-      required this.src});
+  const PostItemWidget({
+    super.key,
+    required this.username,
+    required this.favicon,
+    required this.favonPressed,
+    required this.bookicon,
+    required this.bookonPressed,
+    required this.describtion,
+    required this.src,
+    required this.time,
+  });
   final String username;
   final String describtion;
   final String src;
+  final String time;
   final Widget favicon;
   final Widget bookicon;
   final void Function()? favonPressed;
@@ -59,7 +61,7 @@ class PostItemWidget extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        S.of(context).time,
+                        time,
                         style: const TextStyle(
                           color: Colors.black54,
                           fontSize: 12,

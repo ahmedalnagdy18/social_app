@@ -1,7 +1,8 @@
-import 'package:firebase_app/features/home/presentation/pages/lang_setting_page.dart';
+import 'package:firebase_app/features/home/presentation/lang_cubit/locale_cubit.dart';
 import 'package:firebase_app/features/home/presentation/widgets/setting_widget.dart';
 import 'package:firebase_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
@@ -30,26 +31,57 @@ class SettingPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SettingWidget(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const LangSettingsPage()));
+              BlocConsumer<LocaleCubit, ChangeLocaleState>(
+                listener: (context, state) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        S.of(context).langSnakBar,
+                      ),
+                      backgroundColor: Colors.grey.shade800,
+                      duration: const Duration(seconds: 1),
+                    ),
+                  );
                 },
-                icon: Icons.language_outlined,
-                title: S.of(context).language,
-                subtitle: S.of(context).changeLang,
+                builder: (context, state) {
+                  return SettingWidget(
+                    dropdown: DropdownButton<String>(
+                      value: state.locale.languageCode,
+                      icon: const Icon(Icons.keyboard_arrow_down,
+                          color: Colors.black),
+                      items: ['ar', 'en'].map((String items) {
+                        return DropdownMenuItem<String>(
+                          value: items,
+                          child: Text(items == 'ar'
+                              ? S.of(context).dropdown1
+                              : S.of(context).dropdown2),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        if (newValue != null) {
+                          context.read<LocaleCubit>().changeLanguage(newValue);
+                        }
+                      },
+                    ),
+                    icon: Icons.language_outlined,
+                    title: S.of(context).language,
+                    subtitle: S.of(context).changeLang,
+                  );
+                },
               ),
               const SizedBox(height: 20),
               SettingWidget(
                 icon: Icons.color_lens_outlined,
                 title: S.of(context).theme,
                 subtitle: S.of(context).changeColor,
+                dropdown: const SizedBox(),
               ),
               const SizedBox(height: 20),
               SettingWidget(
                 icon: Icons.logout,
                 title: S.of(context).logout,
                 subtitle: S.of(context).logoutFromApp,
+                dropdown: const SizedBox(),
               ),
             ],
           ),

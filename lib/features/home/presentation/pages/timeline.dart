@@ -133,6 +133,7 @@ class _TimelinePageState extends State<TimelinePage> {
                           itemCount: data.length,
                           itemBuilder: (context, index) {
                             return PostItemWidget(
+                              time: "${data[index]['time']}",
                               src: "${data[index]['url']}",
                               describtion: "${data[index]['Describtion']}",
                               username: 'User $index',
