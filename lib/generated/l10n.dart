@@ -169,6 +169,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Create post`
+  String get createPost {
+    return Intl.message(
+      'Create post',
+      name: 'createPost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can created a post click on the create post button to create your post`
+  String get createDescribtion {
+    return Intl.message(
+      'You can created a post click on the create post button to create your post',
+      name: 'createDescribtion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Describtion*`
+  String get describtion {
+    return Intl.message(
+      'Describtion*',
+      name: 'describtion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Post`
+  String get post {
+    return Intl.message(
+      'Post',
+      name: 'post',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please add both an image and description`
+  String get snakBar {
+    return Intl.message(
+      'Please add both an image and description',
+      name: 'snakBar',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

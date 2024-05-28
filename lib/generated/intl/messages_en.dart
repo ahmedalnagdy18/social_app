@@ -25,13 +25,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "add": MessageLookupByLibrary.simpleMessage("Add"),
         "changeColor": MessageLookupByLibrary.simpleMessage("Change Color"),
         "changeLang": MessageLookupByLibrary.simpleMessage("change Language"),
+        "createDescribtion": MessageLookupByLibrary.simpleMessage(
+            "You can created a post click on the create post button to create your post"),
+        "createPost": MessageLookupByLibrary.simpleMessage("Create post"),
+        "describtion": MessageLookupByLibrary.simpleMessage("Describtion*"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "logoutFromApp":
             MessageLookupByLibrary.simpleMessage("Logout from the app"),
+        "post": MessageLookupByLibrary.simpleMessage("Post"),
         "posts": MessageLookupByLibrary.simpleMessage("Posts"),
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),
+        "snakBar": MessageLookupByLibrary.simpleMessage(
+            "Please add both an image and description"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "time": MessageLookupByLibrary.simpleMessage("2 min ago"),
         "title": MessageLookupByLibrary.simpleMessage("Welcome")

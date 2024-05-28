@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:firebase_app/features/home/presentation/pages/main_page.dart';
+import 'package:firebase_app/generated/l10n.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart';
 
@@ -52,9 +53,9 @@ class _CreateStoryPageState extends State<CreateStoryPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: const Text(
-          'Create post',
-          style: TextStyle(
+        title: Text(
+          S.of(context).createPost,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
             color: Colors.red,
@@ -100,7 +101,7 @@ class _CreateStoryPageState extends State<CreateStoryPage> {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const MainPage()));
                   },
-                  text: 'Post',
+                  text: S.of(context).post,
                   colors: const [Colors.black, Colors.red],
                 )
               ],

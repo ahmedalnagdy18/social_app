@@ -25,13 +25,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "add": MessageLookupByLibrary.simpleMessage("اضافة"),
         "changeColor": MessageLookupByLibrary.simpleMessage("تغيــر اللون"),
         "changeLang": MessageLookupByLibrary.simpleMessage("تغيــر اللغة"),
+        "createDescribtion": MessageLookupByLibrary.simpleMessage(
+            "يمكنك إنشاء منشور بالضغط على زر إنشاء المنشور لإنشاء منشورك."),
+        "createPost": MessageLookupByLibrary.simpleMessage("انشــاء منشور"),
+        "describtion": MessageLookupByLibrary.simpleMessage("الوصــــف*"),
         "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "logoutFromApp":
             MessageLookupByLibrary.simpleMessage("تسجيل الخروج من الابلكيشن"),
-        "posts": MessageLookupByLibrary.simpleMessage("التغريدات"),
+        "post": MessageLookupByLibrary.simpleMessage("نشــر"),
+        "posts": MessageLookupByLibrary.simpleMessage("المنشورات"),
         "setting": MessageLookupByLibrary.simpleMessage("الاعدادات"),
+        "snakBar":
+            MessageLookupByLibrary.simpleMessage("يرجى إضافة صورة ووصف."),
         "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
         "time": MessageLookupByLibrary.simpleMessage("منذ 2 د"),
         "title": MessageLookupByLibrary.simpleMessage("مرحبـــا")

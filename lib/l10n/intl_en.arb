@@ -10,5 +10,10 @@
     "theme": "Theme",
     "changeColor": "Change Color",
     "logout": "Logout",
-    "logoutFromApp": "Logout from the app"
+    "logoutFromApp": "Logout from the app",
+    "createPost": "Create post",
+    "createDescribtion": "You can created a post click on the create post button to create your post",
+    "describtion": "Describtion*",
+    "post": "Post",
+    "snakBar": "Please add both an image and description"
 }

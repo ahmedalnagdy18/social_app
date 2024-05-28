@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:firebase_app/features/home/presentation/pages/main_page.dart';
+import 'package:firebase_app/generated/l10n.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart';
 
@@ -35,11 +36,11 @@ class CreatpostPage extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                   SizedBox(height: queryData.size.height * 0.030),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 40),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 40),
                     child: Text(
-                      'You can created a post click on the create post button to create your post',
-                      style: TextStyle(
+                      S.of(context).createDescribtion,
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
                       ),
@@ -51,7 +52,7 @@ class CreatpostPage extends StatelessWidget {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const CreatePageBody()));
                     },
-                    text: 'Create post',
+                    text: S.of(context).createPost,
                     colors: const [Colors.black, Colors.red],
                   )
                 ],
@@ -108,9 +109,9 @@ class _CreatePageBodyState extends State<CreatePageBody> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: const Text(
-          'Create post',
-          style: TextStyle(
+        title: Text(
+          S.of(context).createPost,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
             color: Colors.red,
@@ -152,7 +153,7 @@ class _CreatePageBodyState extends State<CreatePageBody> {
                 SizedBox(height: queryData.size.height * 0.1),
                 TextFieldWidget(
                   mycontroller: describtion,
-                  hintText: "Describtion*",
+                  hintText: S.of(context).describtion,
                   obscureText: false,
                 ),
                 SizedBox(height: queryData.size.height * 0.1),
@@ -164,16 +165,17 @@ class _CreatePageBodyState extends State<CreatePageBody> {
                           builder: (context) => const MainPage()));
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content:
-                              Text('Please add both an image and description'),
+                        SnackBar(
+                          content: Text(
+                            S.of(context).snakBar,
+                          ),
                           backgroundColor: Colors.red,
-                          duration: Duration(seconds: 1),
+                          duration: const Duration(seconds: 1),
                         ),
                       );
                     }
                   },
-                  text: 'Post',
+                  text: S.of(context).post,
                   colors: const [Colors.black, Colors.red],
                 )
               ],
