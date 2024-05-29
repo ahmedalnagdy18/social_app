@@ -45,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("يرجى إضافة صورة ووصف."),
         "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
         "time": MessageLookupByLibrary.simpleMessage("منذ 2 د"),
-        "title": MessageLookupByLibrary.simpleMessage("مرحبـــا")
+        "title": MessageLookupByLibrary.simpleMessage("مرحبـــا"),
+        "user": MessageLookupByLibrary.simpleMessage("مستخدم")
       };
 }

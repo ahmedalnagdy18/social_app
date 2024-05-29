@@ -2,15 +2,20 @@ class ApiPostModel {
   final String description;
   final String url;
   final String time;
+  final String id;
 
   ApiPostModel(
-      {required this.description, required this.url, required this.time});
+      {required this.id,
+      required this.description,
+      required this.url,
+      required this.time});
 
-  factory ApiPostModel.fromFirestore(Map<String, dynamic> data) {
+  factory ApiPostModel.fromFirestore(String id, Map<String, dynamic> data) {
     return ApiPostModel(
       description: data['description'] ?? '',
       url: data['url'] ?? '',
       time: data['time'] ?? '',
+      id: id,
     );
   }
 }

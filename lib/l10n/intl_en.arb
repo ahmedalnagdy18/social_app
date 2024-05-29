@@ -18,5 +18,6 @@
     "snakBar": "Please add both an image and description",
     "langSnakBar": "Language changed successfully",
     "dropdown1": "AR",
-    "dropdown2": "EN"
+    "dropdown2": "EN",
+    "user": "User"
 }

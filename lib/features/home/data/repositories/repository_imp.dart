@@ -11,7 +11,8 @@ class TimelineRepositoryImpl implements TimelineRepository {
   Stream<List<ApiPostModel>> getPosts() {
     return dataSource.getPostsData().map((snapshot) {
       return snapshot.docs.map((doc) {
-        return ApiPostModel.fromFirestore(doc.data() as Map<String, dynamic>);
+        return ApiPostModel.fromFirestore(
+            doc.id, doc.data() as Map<String, dynamic>);
       }).toList();
     });
   }

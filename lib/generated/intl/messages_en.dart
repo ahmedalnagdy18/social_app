@@ -45,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please add both an image and description"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "time": MessageLookupByLibrary.simpleMessage("2 min ago"),
-        "title": MessageLookupByLibrary.simpleMessage("Welcome")
+        "title": MessageLookupByLibrary.simpleMessage("Welcome"),
+        "user": MessageLookupByLibrary.simpleMessage("User")
       };
 }

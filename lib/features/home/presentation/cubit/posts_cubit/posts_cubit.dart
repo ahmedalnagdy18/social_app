@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_app/features/home/domain/entites/entity.dart';
 import 'package:firebase_app/features/home/domain/usecases/get_allposts_usecase.dart';
 
@@ -20,6 +21,7 @@ class PostsCubit extends Cubit<PostsState> {
                     description: doc.description,
                     url: doc.url,
                     time: doc.time,
+                    id: doc.id,
                   ))
               .toList();
           emit(SuccessAllPosts(posts: posts));
@@ -30,6 +32,14 @@ class PostsCubit extends Cubit<PostsState> {
       );
     } catch (e) {
       emit(FailPosts());
+    }
+  }
+
+  delPost(String id) async {
+    try {
+      await FirebaseFirestore.instance.collection("posts").doc(id).delete();
+    } on Exception {
+      emit(FailDell());
     }
   }
 }

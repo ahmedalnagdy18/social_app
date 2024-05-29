@@ -11,6 +11,7 @@ class PostItemWidget extends StatelessWidget {
     required this.description,
     required this.src,
     required this.time,
+    required this.deleteTap,
   });
   final String username;
   final String description;
@@ -20,6 +21,7 @@ class PostItemWidget extends StatelessWidget {
   final Widget bookicon;
   final void Function()? favonPressed;
   final void Function()? bookonPressed;
+  final Function() deleteTap;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -78,7 +80,8 @@ class PostItemWidget extends StatelessWidget {
                     elevation: 10,
                     itemBuilder: (context) => [
                       const PopupMenuItem(child: Text('edit')),
-                      PopupMenuItem(onTap: () {}, child: const Text('delete')),
+                      PopupMenuItem(
+                          onTap: deleteTap, child: const Text('delete')),
                     ],
                   ),
                 ],

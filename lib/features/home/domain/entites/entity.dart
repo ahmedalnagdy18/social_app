@@ -2,9 +2,13 @@ class PostEntity {
   final String description;
   final String url;
   final String time;
+  final String id;
 
   PostEntity(
-      {required this.description, required this.url, required this.time});
+      {required this.id,
+      required this.description,
+      required this.url,
+      required this.time});
 }
 
 class StoryEntity {

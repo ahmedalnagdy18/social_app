@@ -15,3 +15,5 @@ class SuccessAllPosts extends PostsState {
 }
 
 class FailPosts extends PostsState {}
+
+class FailDell extends PostsState {}

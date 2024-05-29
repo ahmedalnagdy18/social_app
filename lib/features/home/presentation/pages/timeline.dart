@@ -138,20 +138,10 @@ class _TimelinePageState extends State<_TimelinePage> {
                         state is SuccessAllPosts ? state.posts : [];
                     return posts.isEmpty
                         ? const Center(
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: 20,
-                                  width: 20,
-                                  child: CircularProgressIndicator(),
-                                ),
-                                SizedBox(height: 20),
-                                Text(
-                                  "Loading....",
-                                  style: TextStyle(
-                                      fontSize: 18, color: Colors.black54),
-                                ),
-                              ],
+                            child: Text(
+                              "There's no posts",
+                              style: TextStyle(
+                                  fontSize: 18, color: Colors.black54),
                             ),
                           )
                         : ListView.separated(
@@ -163,10 +153,14 @@ class _TimelinePageState extends State<_TimelinePage> {
                             itemCount: posts.length,
                             itemBuilder: (context, index) {
                               return PostItemWidget(
+                                deleteTap: () {
+                                  BlocProvider.of<PostsCubit>(context)
+                                      .delPost(posts[index].id);
+                                },
                                 time: posts[index].time,
                                 src: posts[index].url,
                                 description: posts[index].description,
-                                username: 'User $index',
+                                username: '${S.of(context).user} $index',
                                 favicon: Icon(
                                   likedPosts.contains(index)
                                       ? Icons.favorite
