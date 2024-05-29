@@ -4,9 +4,12 @@ import 'package:firebase_app/features/authentication/domain/usecases/register_us
 import 'package:firebase_app/features/authentication/presentation/cubit/auth_cubit.dart';
 import 'package:firebase_app/features/home/data/data_source/data_source.dart';
 import 'package:firebase_app/features/home/data/repositories/repository_imp.dart';
+import 'package:firebase_app/features/home/domain/repositories/repository.dart';
 import 'package:firebase_app/features/home/domain/usecases/get_allposts_usecase.dart';
-import 'package:firebase_app/features/home/presentation/cubit/timeline_cubit.dart';
-import 'package:firebase_app/features/home/presentation/lang_cubit/locale_cubit.dart';
+import 'package:firebase_app/features/home/domain/usecases/get_allstory_usecase.dart';
+import 'package:firebase_app/features/home/presentation/cubit/posts_cubit/posts_cubit.dart';
+import 'package:firebase_app/features/home/presentation/cubit/lang_cubit/locale_cubit.dart';
+import 'package:firebase_app/features/home/presentation/cubit/story_cubit/story_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 GetIt injector = GetIt.instance;
@@ -24,18 +27,24 @@ void setupinjection() {
       .registerSingleton<TimelineRemoteDataSource>(TimelineRemoteDataSource());
 
   //! Repositories
-  injector.registerSingleton<PostRepositoryImpl>(
-    PostRepositoryImpl(dataSource: injector<TimelineRemoteDataSource>()),
+  injector.registerSingleton<TimelineRepository>(
+    TimelineRepositoryImpl(dataSource: injector<TimelineRemoteDataSource>()),
   );
 
   //! Use Cases
   injector.registerFactory(() => GetPostsUseCase(repository: injector()));
+  injector.registerFactory(() => GetStoriesUseCase(repository: injector()));
 
-  //! Timeline Cubit
-  injector.registerFactory(() => TimelineCubit(
+  //! Posts Cubit
+  injector.registerFactory(() => PostsCubit(
         getAllPostsUsecase: injector(),
       ));
 
+  //! Story Cubit
+
+  injector.registerFactory(() => StoryCubit(
+        getStoriesUseCase: injector(),
+      ));
   //! Lang Cubit
   injector.registerFactory(() => LocaleCubit());
 }

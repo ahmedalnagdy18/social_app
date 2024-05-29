@@ -75,7 +75,7 @@ class CreatePageBody extends StatefulWidget {
 }
 
 class _CreatePageBodyState extends State<CreatePageBody> {
-  final TextEditingController describtion = TextEditingController();
+  final TextEditingController description = TextEditingController();
   DateTime currentTime = DateTime.now();
   File? file;
   String? url;
@@ -104,7 +104,7 @@ class _CreatePageBodyState extends State<CreatePageBody> {
 
     Future<void> addPosts() {
       return posts.add({
-        'Describtion': describtion.text,
+        'description': description.text,
         'url': url ?? "none",
         'time': formattedDate,
       });
@@ -160,14 +160,14 @@ class _CreatePageBodyState extends State<CreatePageBody> {
                 ),
                 SizedBox(height: queryData.size.height * 0.1),
                 TextFieldWidget(
-                  mycontroller: describtion,
+                  mycontroller: description,
                   hintText: S.of(context).describtion,
                   obscureText: false,
                 ),
                 SizedBox(height: queryData.size.height * 0.1),
                 ButtonWidget(
                   onPressed: () {
-                    if (describtion.text.isNotEmpty && url != null) {
+                    if (description.text.isNotEmpty && url != null) {
                       addPosts();
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const MainPage()));

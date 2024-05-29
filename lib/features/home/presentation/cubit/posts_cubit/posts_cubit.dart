@@ -2,10 +2,12 @@ import 'package:bloc/bloc.dart';
 import 'package:firebase_app/features/home/domain/entites/entity.dart';
 import 'package:firebase_app/features/home/domain/usecases/get_allposts_usecase.dart';
 
-part 'timeline_state.dart';
+part 'posts_state.dart';
 
-class TimelineCubit extends Cubit<TimelineState> {
-  TimelineCubit({required this.getAllPostsUsecase}) : super(TimelineInitial());
+class PostsCubit extends Cubit<PostsState> {
+  PostsCubit({
+    required this.getAllPostsUsecase,
+  }) : super(TimelineInitial());
   final GetPostsUseCase getAllPostsUsecase;
   void getAllPosts() async {
     emit(LoadingAllPosts());

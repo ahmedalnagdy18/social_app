@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_app/features/authentication/presentation/pages/splash_screen.dart';
-import 'package:firebase_app/features/home/presentation/lang_cubit/locale_cubit.dart';
+import 'package:firebase_app/features/home/presentation/cubit/lang_cubit/locale_cubit.dart';
 import 'package:firebase_app/generated/l10n.dart';
 import 'package:firebase_app/injection.dart';
 import 'package:firebase_core/firebase_core.dart';

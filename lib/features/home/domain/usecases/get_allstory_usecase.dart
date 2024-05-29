@@ -1,11 +1,12 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:firebase_app/features/home/domain/repositories/repository.dart';
+import 'package:firebase_app/features/home/data/model/api_model.dart';
+import 'package:firebase_app/features/home/domain/repositories/repository.dart';
 
-// class GetAllStoriesUsecase {
-//   Repository repository;
+class GetStoriesUseCase {
+  final TimelineRepository repository;
 
-//   GetAllStoriesUsecase({required this.repository});
-//   Future<Stream<QuerySnapshot<Object?>>> call() async {
-//     return repository.getAllPost();
-//   }
-// }
+  GetStoriesUseCase({required this.repository});
+
+  Stream<List<ApiStoryModel>> call() {
+    return repository.getStories();
+  }
+}

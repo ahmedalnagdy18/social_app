@@ -1,4 +1,4 @@
-import 'package:firebase_app/features/home/presentation/lang_cubit/locale_cubit.dart';
+import 'package:firebase_app/features/home/presentation/cubit/lang_cubit/locale_cubit.dart';
 import 'package:firebase_app/features/home/presentation/widgets/setting_widget.dart';
 import 'package:firebase_app/generated/l10n.dart';
 import 'package:flutter/material.dart';

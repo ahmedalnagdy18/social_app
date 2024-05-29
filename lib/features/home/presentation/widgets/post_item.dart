@@ -8,12 +8,12 @@ class PostItemWidget extends StatelessWidget {
     required this.favonPressed,
     required this.bookicon,
     required this.bookonPressed,
-    required this.describtion,
+    required this.description,
     required this.src,
     required this.time,
   });
   final String username;
-  final String describtion;
+  final String description;
   final String src;
   final String time;
   final Widget favicon;
@@ -98,7 +98,7 @@ class PostItemWidget extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                describtion,
+                description,
                 style: const TextStyle(
                   color: Colors.black,
                   fontSize: 14,
