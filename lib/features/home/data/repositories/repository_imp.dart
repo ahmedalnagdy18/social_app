@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_app/features/home/data/data_source/data_source.dart';
 import 'package:firebase_app/features/home/data/model/api_model.dart';
 import 'package:firebase_app/features/home/domain/repositories/repository.dart';
@@ -24,5 +25,11 @@ class TimelineRepositoryImpl implements TimelineRepository {
         return ApiStoryModel.fromFirestore(doc.data() as Map<String, dynamic>);
       }).toList();
     });
+  }
+
+  @override
+  Future<void> likePost(String postId, bool likeStatus) async {
+    final postRef = FirebaseFirestore.instance.collection('posts').doc(postId);
+    await postRef.update({'like': likeStatus});
   }
 }

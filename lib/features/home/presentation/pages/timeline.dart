@@ -19,8 +19,10 @@ class TimelinePage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (BuildContext context) =>
-              PostsCubit(getAllPostsUsecase: injector.get())..getAllPosts(),
+          create: (BuildContext context) => PostsCubit(
+              getAllPostsUsecase: injector.get(),
+              likePostUsecase: injector.get())
+            ..getAllPosts(),
         ),
         BlocProvider(
           create: (BuildContext context) =>
@@ -40,7 +42,6 @@ class _TimelinePage extends StatefulWidget {
 }
 
 class _TimelinePageState extends State<_TimelinePage> {
-  Set<int> likedPosts = {};
   Set<int> bookmarkedPosts = {};
 
   @override
@@ -152,6 +153,7 @@ class _TimelinePageState extends State<_TimelinePage> {
                                 const SizedBox(height: 20),
                             itemCount: posts.length,
                             itemBuilder: (context, index) {
+                              final post = posts[index];
                               return PostItemWidget(
                                 deleteTap: () {
                                   BlocProvider.of<PostsCubit>(context)
@@ -160,23 +162,17 @@ class _TimelinePageState extends State<_TimelinePage> {
                                 time: posts[index].time,
                                 src: posts[index].url,
                                 description: posts[index].description,
-                                username: '${S.of(context).user} $index',
+                                username: posts[index].username,
                                 favicon: Icon(
-                                  likedPosts.contains(index)
+                                  post.like
                                       ? Icons.favorite
                                       : Icons.favorite_border,
-                                  color: likedPosts.contains(index)
-                                      ? Colors.red
-                                      : null,
+                                  color: post.like ? Colors.red : null,
                                 ),
                                 favonPressed: () {
-                                  setState(() {
-                                    if (likedPosts.contains(index)) {
-                                      likedPosts.remove(index);
-                                    } else {
-                                      likedPosts.add(index);
-                                    }
-                                  });
+                                  // Update liked status in the database
+                                  BlocProvider.of<PostsCubit>(context)
+                                      .likePost(post.id, !post.like);
                                 },
                                 bookicon: Icon(
                                   bookmarkedPosts.contains(index)

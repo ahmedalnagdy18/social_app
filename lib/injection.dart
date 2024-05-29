@@ -34,10 +34,12 @@ void setupinjection() {
   //! Use Cases
   injector.registerFactory(() => GetPostsUseCase(repository: injector()));
   injector.registerFactory(() => GetStoriesUseCase(repository: injector()));
+  injector.registerFactory(() => LikePostUseCase(repository: injector()));
 
   //! Posts Cubit
   injector.registerFactory(() => PostsCubit(
         getAllPostsUsecase: injector(),
+        likePostUsecase: injector(),
       ));
 
   //! Story Cubit

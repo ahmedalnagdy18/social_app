@@ -1,21 +1,28 @@
 class ApiPostModel {
+  final String id;
   final String description;
   final String url;
   final String time;
-  final String id;
+  final String username;
+  final bool like;
 
-  ApiPostModel(
-      {required this.id,
-      required this.description,
-      required this.url,
-      required this.time});
+  ApiPostModel({
+    required this.username,
+    required this.id,
+    required this.description,
+    required this.url,
+    required this.time,
+    required this.like,
+  });
 
   factory ApiPostModel.fromFirestore(String id, Map<String, dynamic> data) {
     return ApiPostModel(
+      id: id,
+      username: data['username'] ?? '',
       description: data['description'] ?? '',
       url: data['url'] ?? '',
       time: data['time'] ?? '',
-      id: id,
+      like: data['like'] ?? false,
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:firebase_app/features/home/presentation/pages/main_page.dart';
 import 'package:firebase_app/generated/l10n.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:path/path.dart';
@@ -101,12 +102,15 @@ class _CreatePageBodyState extends State<CreatePageBody> {
     DateFormat dateFormat = DateFormat('d MMMM, hh:mm a');
     String formattedDate = dateFormat.format(currentTime);
     CollectionReference posts = FirebaseFirestore.instance.collection('posts');
+    final userdata = FirebaseAuth.instance.currentUser;
 
     Future<void> addPosts() {
       return posts.add({
         'description': description.text,
         'url': url ?? "none",
         'time': formattedDate,
+        'like': false,
+        'username': userdata?.email
       });
     }
 

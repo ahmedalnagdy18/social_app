@@ -10,3 +10,13 @@ class GetPostsUseCase {
     return repository.getPosts();
   }
 }
+
+class LikePostUseCase {
+  final TimelineRepository repository;
+
+  LikePostUseCase({required this.repository});
+
+  Future<void> call(String postId, bool likeStatus) {
+    return repository.likePost(postId, likeStatus);
+  }
+}

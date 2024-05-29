@@ -7,9 +7,12 @@ part 'posts_state.dart';
 
 class PostsCubit extends Cubit<PostsState> {
   PostsCubit({
+    required this.likePostUsecase,
     required this.getAllPostsUsecase,
   }) : super(TimelineInitial());
   final GetPostsUseCase getAllPostsUsecase;
+  final LikePostUseCase likePostUsecase;
+
   void getAllPosts() async {
     emit(LoadingAllPosts());
     try {
@@ -22,6 +25,8 @@ class PostsCubit extends Cubit<PostsState> {
                     url: doc.url,
                     time: doc.time,
                     id: doc.id,
+                    like: doc.like,
+                    username: doc.username,
                   ))
               .toList();
           emit(SuccessAllPosts(posts: posts));
@@ -40,6 +45,15 @@ class PostsCubit extends Cubit<PostsState> {
       await FirebaseFirestore.instance.collection("posts").doc(id).delete();
     } on Exception {
       emit(FailDell());
+    }
+  }
+
+  void likePost(String postId, bool likeStatus) async {
+    try {
+      await likePostUsecase.call(postId, likeStatus);
+      //  getAllPosts(); // Refresh posts after liking/unliking
+    } catch (e) {
+      // Handle error
     }
   }
 }
