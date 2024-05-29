@@ -19,5 +19,8 @@
     "langSnakBar": "تم تغيير اللغة بنجاح",
     "dropdown1": "عربي",
     "dropdown2": "English",
-    "user": "مستخدم"
+    "user": "مستخدم",
+    "logoutmssg": "هل ترغب بالخروج ؟",
+    "yes": "نعم",
+    "no": "لا"
 }

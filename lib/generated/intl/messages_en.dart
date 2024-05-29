@@ -38,6 +38,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "logoutFromApp":
             MessageLookupByLibrary.simpleMessage("Logout from the app"),
+        "logoutmssg":
+            MessageLookupByLibrary.simpleMessage("Do you want to logout ?"),
+        "no": MessageLookupByLibrary.simpleMessage("No"),
         "post": MessageLookupByLibrary.simpleMessage("Post"),
         "posts": MessageLookupByLibrary.simpleMessage("Posts"),
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),
@@ -46,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "time": MessageLookupByLibrary.simpleMessage("2 min ago"),
         "title": MessageLookupByLibrary.simpleMessage("Welcome"),
-        "user": MessageLookupByLibrary.simpleMessage("User")
+        "user": MessageLookupByLibrary.simpleMessage("User"),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

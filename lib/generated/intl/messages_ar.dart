@@ -38,6 +38,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "logoutFromApp":
             MessageLookupByLibrary.simpleMessage("تسجيل الخروج من الابلكيشن"),
+        "logoutmssg": MessageLookupByLibrary.simpleMessage("هل ترغب بالخروج ؟"),
+        "no": MessageLookupByLibrary.simpleMessage("لا"),
         "post": MessageLookupByLibrary.simpleMessage("نشــر"),
         "posts": MessageLookupByLibrary.simpleMessage("المنشورات"),
         "setting": MessageLookupByLibrary.simpleMessage("الاعدادات"),
@@ -46,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
         "time": MessageLookupByLibrary.simpleMessage("منذ 2 د"),
         "title": MessageLookupByLibrary.simpleMessage("مرحبـــا"),
-        "user": MessageLookupByLibrary.simpleMessage("مستخدم")
+        "user": MessageLookupByLibrary.simpleMessage("مستخدم"),
+        "yes": MessageLookupByLibrary.simpleMessage("نعم")
       };
 }

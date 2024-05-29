@@ -1,7 +1,9 @@
 import 'package:firebase_app/features/home/presentation/cubit/lang_cubit/locale_cubit.dart';
+import 'package:firebase_app/features/home/presentation/widgets/alret_dialog.dart';
 import 'package:firebase_app/features/home/presentation/widgets/setting_widget.dart';
 import 'package:firebase_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SettingPage extends StatelessWidget {
@@ -70,6 +72,7 @@ class SettingPage extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 20),
+              //! Theme
               SettingWidget(
                 icon: Icons.color_lens_outlined,
                 title: S.of(context).theme,
@@ -77,7 +80,16 @@ class SettingPage extends StatelessWidget {
                 dropdown: const SizedBox(),
               ),
               const SizedBox(height: 20),
+              //! Logout
               SettingWidget(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return const AlertDialogWidget();
+                    },
+                  );
+                },
                 icon: Icons.logout,
                 title: S.of(context).logout,
                 subtitle: S.of(context).logoutFromApp,

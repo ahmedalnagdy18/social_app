@@ -14,7 +14,6 @@ class MyAppbar extends StatelessWidget {
         children: [
           Text(
             S.of(context).title,
-            //   'Welcome',
             style: const TextStyle(
               fontSize: 22,
               color: Colors.red,

@@ -19,5 +19,8 @@
     "langSnakBar": "Language changed successfully",
     "dropdown1": "AR",
     "dropdown2": "EN",
-    "user": "User"
+    "user": "User",
+    "logoutmssg": "Do you want to logout ?",
+    "yes": "Yes",
+    "no": "No"
 }

@@ -259,6 +259,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Do you want to logout ?`
+  String get logoutmssg {
+    return Intl.message(
+      'Do you want to logout ?',
+      name: 'logoutmssg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes`
+  String get yes {
+    return Intl.message(
+      'Yes',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No`
+  String get no {
+    return Intl.message(
+      'No',
+      name: 'no',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
