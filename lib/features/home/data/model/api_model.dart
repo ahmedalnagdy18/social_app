@@ -5,6 +5,7 @@ class ApiPostModel {
   final String time;
   final String username;
   final bool like;
+  final int likeCount;
 
   ApiPostModel({
     required this.username,
@@ -13,6 +14,7 @@ class ApiPostModel {
     required this.url,
     required this.time,
     required this.like,
+    required this.likeCount,
   });
 
   factory ApiPostModel.fromFirestore(String id, Map<String, dynamic> data) {
@@ -23,6 +25,7 @@ class ApiPostModel {
       url: data['url'] ?? '',
       time: data['time'] ?? '',
       like: data['like'] ?? false,
+      likeCount: data['likeCount'] ?? 0,
     );
   }
 }

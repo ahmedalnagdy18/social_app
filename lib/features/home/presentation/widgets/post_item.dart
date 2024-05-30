@@ -12,6 +12,7 @@ class PostItemWidget extends StatelessWidget {
     required this.src,
     required this.time,
     required this.deleteTap,
+    required this.likeCount,
   });
   final String username;
   final String description;
@@ -22,6 +23,7 @@ class PostItemWidget extends StatelessWidget {
   final void Function()? favonPressed;
   final void Function()? bookonPressed;
   final Function() deleteTap;
+  final int likeCount;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -115,6 +117,7 @@ class PostItemWidget extends StatelessWidget {
                     icon: favicon,
                     onPressed: favonPressed,
                   ),
+                  Text(likeCount.toString()),
                   const SizedBox(width: 18),
                   const Icon(
                     Icons.chat_bubble_outline,

@@ -159,6 +159,7 @@ class _TimelinePageState extends State<_TimelinePage> {
                                   BlocProvider.of<PostsCubit>(context)
                                       .delPost(posts[index].id);
                                 },
+                                likeCount: post.likeCount,
                                 time: posts[index].time,
                                 src: posts[index].url,
                                 description: posts[index].description,
@@ -170,7 +171,6 @@ class _TimelinePageState extends State<_TimelinePage> {
                                   color: post.like ? Colors.red : null,
                                 ),
                                 favonPressed: () {
-                                  // Update liked status in the database
                                   BlocProvider.of<PostsCubit>(context)
                                       .likePost(post.id, !post.like);
                                 },

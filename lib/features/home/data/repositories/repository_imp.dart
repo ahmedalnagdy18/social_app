@@ -28,8 +28,15 @@ class TimelineRepositoryImpl implements TimelineRepository {
   }
 
   @override
-  Future<void> likePost(String postId, bool likeStatus) async {
+  Future<void> likePost(String postId, bool like) async {
     final postRef = FirebaseFirestore.instance.collection('posts').doc(postId);
-    await postRef.update({'like': likeStatus});
+    final postSnapshot = await postRef.get();
+    final currentLikeCount = postSnapshot.data()?['likeCount'] ?? 0;
+
+    if (like) {
+      await postRef.update({'like': true, 'likeCount': currentLikeCount + 1});
+    } else {
+      await postRef.update({'like': false, 'likeCount': currentLikeCount - 1});
+    }
   }
 }

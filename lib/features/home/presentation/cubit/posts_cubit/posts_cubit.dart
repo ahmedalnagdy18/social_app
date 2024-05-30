@@ -27,6 +27,7 @@ class PostsCubit extends Cubit<PostsState> {
                     id: doc.id,
                     like: doc.like,
                     username: doc.username,
+                    likeCount: doc.likeCount,
                   ))
               .toList();
           emit(SuccessAllPosts(posts: posts));

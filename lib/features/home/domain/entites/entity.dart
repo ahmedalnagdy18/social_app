@@ -5,6 +5,7 @@ class PostEntity {
   final String time;
   final String username;
   final bool like;
+  final int likeCount;
 
   PostEntity({
     required this.username,
@@ -13,6 +14,7 @@ class PostEntity {
     required this.url,
     required this.time,
     required this.like,
+    required this.likeCount,
   });
 }
 
