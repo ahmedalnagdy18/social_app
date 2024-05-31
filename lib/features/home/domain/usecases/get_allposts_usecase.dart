@@ -16,7 +16,7 @@ class LikePostUseCase {
 
   LikePostUseCase({required this.repository});
 
-  Future<void> call(String postId, bool likeStatus) {
-    return repository.likePost(postId, likeStatus);
+  Future<void> call(String postId, String userId, bool like) {
+    return repository.likePost(postId, userId, like);
   }
 }

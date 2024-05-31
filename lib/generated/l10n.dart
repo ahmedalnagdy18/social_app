@@ -90,6 +90,16 @@ class S {
     );
   }
 
+  /// `There's no posts`
+  String get thereNoPost {
+    return Intl.message(
+      'There\'s no posts',
+      name: 'thereNoPost',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Setting`
   String get setting {
     return Intl.message(

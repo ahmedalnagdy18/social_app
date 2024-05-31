@@ -8,6 +8,7 @@ import 'package:firebase_app/features/home/presentation/widgets/listview_body.da
 import 'package:firebase_app/features/home/presentation/widgets/post_item.dart';
 import 'package:firebase_app/generated/l10n.dart';
 import 'package:firebase_app/injection.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -138,10 +139,10 @@ class _TimelinePageState extends State<_TimelinePage> {
                     final List<PostEntity> posts =
                         state is SuccessAllPosts ? state.posts : [];
                     return posts.isEmpty
-                        ? const Center(
+                        ? Center(
                             child: Text(
-                              "There's no posts",
-                              style: TextStyle(
+                              S.of(context).thereNoPost,
+                              style: const TextStyle(
                                   fontSize: 18, color: Colors.black54),
                             ),
                           )
@@ -164,15 +165,24 @@ class _TimelinePageState extends State<_TimelinePage> {
                                 src: posts[index].url,
                                 description: posts[index].description,
                                 username: posts[index].username,
+                                likes: post.like,
                                 favicon: Icon(
-                                  post.like
+                                  post.like.contains(FirebaseAuth
+                                          .instance.currentUser!.uid)
                                       ? Icons.favorite
                                       : Icons.favorite_border,
-                                  color: post.like ? Colors.red : null,
+                                  color: post.like.contains(FirebaseAuth
+                                          .instance.currentUser!.uid)
+                                      ? Colors.red
+                                      : null,
                                 ),
                                 favonPressed: () {
-                                  BlocProvider.of<PostsCubit>(context)
-                                      .likePost(post.id, !post.like);
+                                  context.read<PostsCubit>().likePost(
+                                        post.id,
+                                        FirebaseAuth.instance.currentUser!.uid,
+                                        !post.like.contains(FirebaseAuth
+                                            .instance.currentUser!.uid),
+                                      );
                                 },
                                 bookicon: Icon(
                                   bookmarkedPosts.contains(index)

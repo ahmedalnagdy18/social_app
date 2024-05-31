@@ -49,10 +49,9 @@ class PostsCubit extends Cubit<PostsState> {
     }
   }
 
-  void likePost(String postId, bool likeStatus) async {
+  void likePost(String postId, String userId, bool likeStatus) async {
     try {
-      await likePostUsecase.call(postId, likeStatus);
-      //  getAllPosts(); // Refresh posts after liking/unliking
+      await likePostUsecase.call(postId, userId, likeStatus);
     } catch (e) {
       // Handle error
     }

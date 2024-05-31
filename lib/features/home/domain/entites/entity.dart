@@ -4,7 +4,7 @@ class PostEntity {
   final String url;
   final String time;
   final String username;
-  final bool like;
+  final List<String> like;
   final int likeCount;
 
   PostEntity({

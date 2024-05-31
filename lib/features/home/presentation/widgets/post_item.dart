@@ -13,12 +13,14 @@ class PostItemWidget extends StatelessWidget {
     required this.time,
     required this.deleteTap,
     required this.likeCount,
+    required this.likes,
   });
   final String username;
   final String description;
   final String src;
   final String time;
   final Widget favicon;
+  final List<String> likes;
   final Widget bookicon;
   final void Function()? favonPressed;
   final void Function()? bookonPressed;

@@ -4,7 +4,7 @@ class ApiPostModel {
   final String url;
   final String time;
   final String username;
-  final bool like;
+  final List<String> like;
   final int likeCount;
 
   ApiPostModel({
@@ -24,7 +24,7 @@ class ApiPostModel {
       description: data['description'] ?? '',
       url: data['url'] ?? '',
       time: data['time'] ?? '',
-      like: data['like'] ?? false,
+      like: List<String>.from(data['likes'] ?? []),
       likeCount: data['likeCount'] ?? 0,
     );
   }

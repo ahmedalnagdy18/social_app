@@ -47,6 +47,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "snakBar": MessageLookupByLibrary.simpleMessage(
             "Please add both an image and description"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "thereNoPost":
+            MessageLookupByLibrary.simpleMessage("There\'s no posts"),
         "time": MessageLookupByLibrary.simpleMessage("2 min ago"),
         "title": MessageLookupByLibrary.simpleMessage("Welcome"),
         "user": MessageLookupByLibrary.simpleMessage("User"),
