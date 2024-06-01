@@ -6,6 +6,7 @@ class ApiPostModel {
   final String username;
   final List<String> like;
   final int likeCount;
+  final String ownerId;
 
   ApiPostModel({
     required this.username,
@@ -15,6 +16,7 @@ class ApiPostModel {
     required this.time,
     required this.like,
     required this.likeCount,
+    required this.ownerId,
   });
 
   factory ApiPostModel.fromFirestore(String id, Map<String, dynamic> data) {
@@ -26,6 +28,7 @@ class ApiPostModel {
       time: data['time'] ?? '',
       like: List<String>.from(data['likes'] ?? []),
       likeCount: data['likeCount'] ?? 0,
+      ownerId: data['ownerId'] ?? '', // Parse ownerId
     );
   }
 }

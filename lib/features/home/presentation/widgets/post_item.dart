@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class PostItemWidget extends StatelessWidget {
@@ -14,6 +15,7 @@ class PostItemWidget extends StatelessWidget {
     required this.deleteTap,
     required this.likeCount,
     required this.likes,
+    required this.ownerId,
   });
   final String username;
   final String description;
@@ -26,8 +28,10 @@ class PostItemWidget extends StatelessWidget {
   final void Function()? bookonPressed;
   final Function() deleteTap;
   final int likeCount;
+  final String ownerId;
   @override
   Widget build(BuildContext context) {
+    final currentUserId = FirebaseAuth.instance.currentUser?.uid;
     return Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         decoration: BoxDecoration(
@@ -77,19 +81,21 @@ class PostItemWidget extends StatelessWidget {
                     ],
                   ),
                   const Spacer(),
-                  PopupMenuButton(
-                    padding: EdgeInsets.zero,
-                    color: Colors.white,
-                    icon: const Icon(Icons.more_horiz, color: Colors.black),
-                    elevation: 10,
-                    itemBuilder: (context) => [
-                      const PopupMenuItem(child: Text('edit')),
-                      PopupMenuItem(
-                          onTap: deleteTap, child: const Text('delete')),
-                    ],
-                  ),
+                  if (currentUserId == ownerId)
+                    PopupMenuButton(
+                      padding: EdgeInsets.zero,
+                      color: Colors.white,
+                      icon: const Icon(Icons.more_horiz, color: Colors.black),
+                      elevation: 10,
+                      itemBuilder: (context) => [
+                        const PopupMenuItem(child: Text('edit')),
+                        PopupMenuItem(
+                            onTap: deleteTap, child: const Text('delete')),
+                      ],
+                    ),
                 ],
               ),
+              const SizedBox(height: 8),
               Container(
                 width: double.infinity,
                 constraints: const BoxConstraints(
@@ -112,7 +118,7 @@ class PostItemWidget extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 8),
               Row(
                 children: [
                   IconButton(

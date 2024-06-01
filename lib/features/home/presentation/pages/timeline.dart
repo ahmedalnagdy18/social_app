@@ -166,6 +166,7 @@ class _TimelinePageState extends State<_TimelinePage> {
                                 description: posts[index].description,
                                 username: posts[index].username,
                                 likes: post.like,
+                                ownerId: post.ownerId,
                                 favicon: Icon(
                                   post.like.contains(FirebaseAuth
                                           .instance.currentUser!.uid)

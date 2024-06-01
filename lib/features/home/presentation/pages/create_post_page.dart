@@ -109,7 +109,8 @@ class _CreatePageBodyState extends State<CreatePageBody> {
         'description': description.text,
         'url': url ?? "none",
         'time': formattedDate,
-        'username': userdata?.email
+        'username': userdata?.email,
+        'ownerId': userdata?.uid,
       });
     }
 
