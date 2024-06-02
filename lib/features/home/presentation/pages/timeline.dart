@@ -95,13 +95,27 @@ class _TimelinePageState extends State<_TimelinePage> {
                           return GestureDetector(
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => StoryDetailPage(
-                                    imageUrl: stories[index - 1].url),
+                                builder: (_) => BlocProvider.value(
+                                  value: context.read<StoryCubit>(),
+                                  child: Builder(builder: (context) {
+                                    return StoryDetailPage(
+                                      imageUrl: stories[index - 1].url,
+                                      deleteStory: () {
+                                        BlocProvider.of<StoryCubit>(context)
+                                            .delStory(stories[index - 1].id);
+                                        Navigator.of(context).pop();
+                                      },
+                                      ownerStoryId: stories[index - 1].ownerId,
+                                    );
+                                  }),
+                                ),
                               ));
                             },
                             child: StoryUser(
-                                text: 'Story $index',
-                                src: stories[index - 1].url),
+                              storyUsername: stories[index - 1].username,
+                              src: stories[index - 1].url,
+                              ownerId: stories[index - 1].ownerId,
+                            ),
                           );
                         }
                       },

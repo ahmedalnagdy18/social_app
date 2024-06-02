@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_app/features/home/domain/entites/entity.dart';
 import 'package:firebase_app/features/home/domain/usecases/get_allstory_usecase.dart';
 
@@ -18,7 +19,10 @@ class StoryCubit extends Cubit<StoryState> {
         (postSnapshots) {
           final stories = postSnapshots
               .map((doc) => StoryEntity(
+                    id: doc.id,
                     url: doc.url,
+                    username: doc.username,
+                    ownerId: doc.ownerId,
                   ))
               .toList();
           emit(SuccessAllStories(stories: stories));
@@ -29,6 +33,14 @@ class StoryCubit extends Cubit<StoryState> {
       );
     } catch (e) {
       emit(FailStories());
+    }
+  }
+
+  delStory(String id) async {
+    try {
+      await FirebaseFirestore.instance.collection("Story").doc(id).delete();
+    } on Exception {
+      emit(FailDell());
     }
   }
 }

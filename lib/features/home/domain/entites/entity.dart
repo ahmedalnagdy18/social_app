@@ -21,7 +21,15 @@ class PostEntity {
 }
 
 class StoryEntity {
+  final String id;
   final String url;
+  final String username;
+  final String ownerId;
 
-  StoryEntity({required this.url});
+  StoryEntity({
+    required this.id,
+    required this.url,
+    required this.username,
+    required this.ownerId,
+  });
 }

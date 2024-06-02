@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:firebase_app/features/home/presentation/pages/main_page.dart';
 import 'package:firebase_app/generated/l10n.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart';
 
@@ -40,9 +41,14 @@ class _CreateStoryPageState extends State<CreateStoryPage> {
   @override
   Widget build(BuildContext context) {
     CollectionReference story = FirebaseFirestore.instance.collection('Story');
+    final userStorydata = FirebaseAuth.instance.currentUser;
 
     Future<void> addStory() {
-      return story.add({'url': surl});
+      return story.add({
+        'url': surl,
+        'username': userStorydata?.email,
+        'ownerId': userStorydata?.uid,
+      });
     }
 
     MediaQueryData queryData;

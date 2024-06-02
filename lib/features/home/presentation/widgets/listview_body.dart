@@ -2,9 +2,14 @@ import 'package:firebase_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class StoryUser extends StatelessWidget {
-  const StoryUser({super.key, required this.text, required this.src});
-  final String text;
+  const StoryUser(
+      {super.key,
+      required this.storyUsername,
+      required this.src,
+      required this.ownerId});
+  final String storyUsername;
   final String src;
+  final String ownerId;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,7 +37,15 @@ class StoryUser extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 4),
-          Text(text),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                storyUsername,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ),
         ],
       ),
     );

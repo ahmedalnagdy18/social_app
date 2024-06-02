@@ -1,9 +1,16 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class StoryDetailPage extends StatefulWidget {
   final String imageUrl;
+  final Function() deleteStory;
+  final String ownerStoryId;
 
-  const StoryDetailPage({super.key, required this.imageUrl});
+  const StoryDetailPage(
+      {super.key,
+      required this.imageUrl,
+      required this.deleteStory,
+      required this.ownerStoryId});
 
   @override
   StoryDetailPageState createState() => StoryDetailPageState();
@@ -36,6 +43,8 @@ class StoryDetailPageState extends State<StoryDetailPage>
 
   @override
   Widget build(BuildContext context) {
+    final currentUserId = FirebaseAuth.instance.currentUser?.uid;
+
     return Scaffold(
       body: InkWell(
         onTap: () {
@@ -59,10 +68,28 @@ class StoryDetailPageState extends State<StoryDetailPage>
                 child: AnimatedBuilder(
                   animation: _controller,
                   builder: (context, child) {
-                    return LinearProgressIndicator(
-                      value: _controller.value,
-                      color: Colors.white,
-                      backgroundColor: Colors.black.withOpacity(0.2),
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        LinearProgressIndicator(
+                          value: _controller.value,
+                          color: Colors.white,
+                          backgroundColor: Colors.black.withOpacity(0.2),
+                        ),
+                        if (currentUserId == widget.ownerStoryId)
+                          PopupMenuButton(
+                            padding: EdgeInsets.zero,
+                            color: Colors.white,
+                            icon: const Icon(Icons.more_horiz,
+                                color: Colors.black),
+                            elevation: 10,
+                            itemBuilder: (context) => [
+                              PopupMenuItem(
+                                  onTap: widget.deleteStory,
+                                  child: const Text('delete')),
+                            ],
+                          ),
+                      ],
                     );
                   },
                 ),

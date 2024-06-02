@@ -15,3 +15,5 @@ class SuccessAllStories extends StoryState {
 }
 
 class FailStories extends StoryState {}
+
+class FailDell extends StoryState {}

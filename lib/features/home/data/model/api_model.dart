@@ -34,13 +34,24 @@ class ApiPostModel {
 }
 
 class ApiStoryModel {
+  final String id;
   final String url;
+  final String username;
+  final String ownerId;
 
-  ApiStoryModel({required this.url});
+  ApiStoryModel({
+    required this.id,
+    required this.url,
+    required this.username,
+    required this.ownerId,
+  });
 
-  factory ApiStoryModel.fromFirestore(Map<String, dynamic> data) {
+  factory ApiStoryModel.fromFirestore(String id, Map<String, dynamic> data) {
     return ApiStoryModel(
+      id: id,
       url: data['url'] ?? '',
+      username: data['username'] ?? '',
+      ownerId: data['ownerId'] ?? '',
     );
   }
 }
