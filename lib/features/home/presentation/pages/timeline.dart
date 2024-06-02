@@ -94,22 +94,32 @@ class _TimelinePageState extends State<_TimelinePage> {
                         } else {
                           return GestureDetector(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                builder: (_) => BlocProvider.value(
-                                  value: context.read<StoryCubit>(),
-                                  child: Builder(builder: (context) {
-                                    return StoryDetailPage(
-                                      imageUrl: stories[index - 1].url,
-                                      deleteStory: () {
-                                        BlocProvider.of<StoryCubit>(context)
-                                            .delStory(stories[index - 1].id);
-                                        Navigator.of(context).pop();
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (_) => BlocProvider.value(
+                                    value: context.read<StoryCubit>(),
+                                    child: Builder(
+                                      builder: (context) {
+                                        return StoryDetailPage(
+                                          imageUrl: stories
+                                              .map((story) => story.url)
+                                              .toList(),
+                                          initialIndex: index - 1,
+                                          deleteStory: (currentIndex) {
+                                            BlocProvider.of<StoryCubit>(context)
+                                                .delStory(
+                                                    stories[currentIndex].id);
+                                            Navigator.of(context).pop();
+                                          },
+                                          ownerStoryId: stories
+                                              .map((story) => story.ownerId)
+                                              .toList(),
+                                        );
                                       },
-                                      ownerStoryId: stories[index - 1].ownerId,
-                                    );
-                                  }),
+                                    ),
+                                  ),
                                 ),
-                              ));
+                              );
                             },
                             child: StoryUser(
                               storyUsername: stories[index - 1].username,
