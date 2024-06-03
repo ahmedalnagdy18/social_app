@@ -67,12 +67,14 @@ class StoryDetailPageState extends State<StoryDetailPage>
     final currentUserId = FirebaseAuth.instance.currentUser?.uid;
 
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Dismissible(
         key: UniqueKey(),
         direction: DismissDirection.down,
         onDismissed: (direction) {
           Navigator.of(context).pop();
         },
+        background: Container(color: Colors.black),
         child: InkWell(
           onTap: _onTap,
           child: Stack(
