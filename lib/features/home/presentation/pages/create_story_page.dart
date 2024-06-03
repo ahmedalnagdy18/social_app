@@ -55,7 +55,7 @@ class _CreateStoryPageState extends State<CreateStoryPage> {
     queryData = MediaQuery.of(context);
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,

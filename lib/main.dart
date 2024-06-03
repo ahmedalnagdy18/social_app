@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_app/features/authentication/presentation/pages/splash_screen.dart';
 import 'package:firebase_app/features/home/presentation/cubit/lang_cubit/locale_cubit.dart';
+import 'package:firebase_app/features/home/presentation/cubit/theme_cubit/theme_cubit.dart';
+import 'package:firebase_app/features/home/presentation/cubit/theme_cubit/theme_state.dart';
 import 'package:firebase_app/generated/l10n.dart';
 import 'package:firebase_app/injection.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -40,22 +42,34 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LocaleCubit()..getSavedLanguage(),
-      child: BlocBuilder<LocaleCubit, ChangeLocaleState>(
-        builder: (context, state) {
-          return MaterialApp(
-            locale: state.locale,
-            localizationsDelegates: const [
-              S.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: S.delegate.supportedLocales,
-            debugShowCheckedModeBanner: false,
-            builder: DevicePreview.appBuilder,
-            home: const SplashScreen(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => LocaleCubit()..getSavedLanguage(),
+        ),
+        BlocProvider(
+          create: (context) => ThemeCubit(),
+        ),
+      ],
+      child: BlocBuilder<ThemeCubit, ThemeState>(
+        builder: (context, themeState) {
+          return BlocBuilder<LocaleCubit, ChangeLocaleState>(
+            builder: (context, state) {
+              return MaterialApp(
+                locale: state.locale,
+                theme: themeState.themeData,
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: S.delegate.supportedLocales,
+                debugShowCheckedModeBanner: false,
+                builder: DevicePreview.appBuilder,
+                home: const SplashScreen(),
+              );
+            },
           );
         },
       ),

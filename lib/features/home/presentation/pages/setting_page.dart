@@ -1,4 +1,6 @@
 import 'package:firebase_app/features/home/presentation/cubit/lang_cubit/locale_cubit.dart';
+import 'package:firebase_app/features/home/presentation/cubit/theme_cubit/theme_cubit.dart';
+import 'package:firebase_app/features/home/presentation/cubit/theme_cubit/theme_state.dart';
 import 'package:firebase_app/features/home/presentation/widgets/alret_dialog.dart';
 import 'package:firebase_app/features/home/presentation/widgets/setting_widget.dart';
 import 'package:firebase_app/generated/l10n.dart';
@@ -12,7 +14,7 @@ class SettingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
@@ -73,11 +75,20 @@ class SettingPage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               //! Theme
-              SettingWidget(
-                icon: Icons.color_lens_outlined,
-                title: S.of(context).theme,
-                subtitle: S.of(context).changeColor,
-                dropdown: const SizedBox(),
+              BlocBuilder<ThemeCubit, ThemeState>(
+                builder: (context, themeState) {
+                  return SettingWidget(
+                    icon: Icons.color_lens_outlined,
+                    title: S.of(context).theme,
+                    subtitle: S.of(context).changeColor,
+                    dropdown: Switch(
+                      value: themeState.isDarkTheme,
+                      onChanged: (value) {
+                        context.read<ThemeCubit>().toggleTheme();
+                      },
+                    ),
+                  );
+                },
               ),
               const SizedBox(height: 20),
               //! Logout

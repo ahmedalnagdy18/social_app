@@ -21,7 +21,7 @@ class CreatpostPage extends StatelessWidget {
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -42,9 +42,12 @@ class CreatpostPage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 40),
                     child: Text(
                       S.of(context).createDescribtion,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
                       ),
                     ),
                   ),
@@ -117,7 +120,7 @@ class _CreatePageBodyState extends State<CreatePageBody> {
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,

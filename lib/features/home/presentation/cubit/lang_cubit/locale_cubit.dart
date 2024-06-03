@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:firebase_app/features/home/presentation/pages/lang_cache_helper.dart';
+import 'package:firebase_app/core/utils/lang_cache_helper.dart';
 import 'package:flutter/material.dart';
 
 part 'locale_state.dart';
