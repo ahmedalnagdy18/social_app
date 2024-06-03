@@ -5,6 +5,7 @@ class ApiPostModel {
   final String time;
   final String username;
   final List<String> like;
+  final List<String> bookmark;
   final int likeCount;
   final String ownerId;
 
@@ -15,6 +16,7 @@ class ApiPostModel {
     required this.url,
     required this.time,
     required this.like,
+    required this.bookmark,
     required this.likeCount,
     required this.ownerId,
   });
@@ -27,6 +29,7 @@ class ApiPostModel {
       url: data['url'] ?? '',
       time: data['time'] ?? '',
       like: List<String>.from(data['likes'] ?? []),
+      bookmark: List<String>.from(data['bookmarks'] ?? []),
       likeCount: data['likeCount'] ?? 0,
       ownerId: data['ownerId'] ?? '', // Parse ownerId
     );

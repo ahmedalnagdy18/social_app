@@ -20,3 +20,13 @@ class LikePostUseCase {
     return repository.likePost(postId, userId, like);
   }
 }
+
+class BookmarkPostUseCase {
+  final TimelineRepository repository;
+
+  BookmarkPostUseCase({required this.repository});
+
+  Future<void> call(String postId, String userId, bool bookmark) {
+    return repository.bookmark(postId, userId, bookmark);
+  }
+}

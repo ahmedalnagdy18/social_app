@@ -15,6 +15,7 @@ class PostItemWidget extends StatelessWidget {
     required this.deleteTap,
     required this.likeCount,
     required this.likes,
+    required this.bookmarks,
     required this.ownerId,
   });
   final String username;
@@ -23,6 +24,7 @@ class PostItemWidget extends StatelessWidget {
   final String time;
   final Widget favicon;
   final List<String> likes;
+  final List<String> bookmarks;
   final Widget bookicon;
   final void Function()? favonPressed;
   final void Function()? bookonPressed;

@@ -21,9 +21,10 @@ class TimelinePage extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (BuildContext context) => PostsCubit(
-              getAllPostsUsecase: injector.get(),
-              likePostUsecase: injector.get())
-            ..getAllPosts(),
+            getAllPostsUsecase: injector.get(),
+            likePostUsecase: injector.get(),
+            bookmarkPostUseCase: injector.get(),
+          )..getAllPosts(),
         ),
         BlocProvider(
           create: (BuildContext context) =>
@@ -43,8 +44,6 @@ class _TimelinePage extends StatefulWidget {
 }
 
 class _TimelinePageState extends State<_TimelinePage> {
-  Set<int> bookmarkedPosts = {};
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -190,6 +189,7 @@ class _TimelinePageState extends State<_TimelinePage> {
                                 description: posts[index].description,
                                 username: posts[index].username,
                                 likes: post.like,
+                                bookmarks: post.bookmark,
                                 ownerId: post.ownerId,
                                 favicon: Icon(
                                   post.like.contains(FirebaseAuth
@@ -210,21 +210,22 @@ class _TimelinePageState extends State<_TimelinePage> {
                                       );
                                 },
                                 bookicon: Icon(
-                                  bookmarkedPosts.contains(index)
+                                  post.bookmark.contains(FirebaseAuth
+                                          .instance.currentUser!.uid)
                                       ? Icons.bookmark
                                       : Icons.bookmark_border,
-                                  color: bookmarkedPosts.contains(index)
+                                  color: post.bookmark.contains(FirebaseAuth
+                                          .instance.currentUser!.uid)
                                       ? Colors.yellow.shade700
                                       : null,
                                 ),
                                 bookonPressed: () {
-                                  setState(() {
-                                    if (bookmarkedPosts.contains(index)) {
-                                      bookmarkedPosts.remove(index);
-                                    } else {
-                                      bookmarkedPosts.add(index);
-                                    }
-                                  });
+                                  context.read<PostsCubit>().bookmarkPost(
+                                        post.id,
+                                        FirebaseAuth.instance.currentUser!.uid,
+                                        !post.bookmark.contains(FirebaseAuth
+                                            .instance.currentUser!.uid),
+                                      );
                                 },
                               );
                             },

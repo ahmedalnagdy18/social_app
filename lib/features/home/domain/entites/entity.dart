@@ -5,6 +5,7 @@ class PostEntity {
   final String time;
   final String username;
   final List<String> like;
+  final List<String> bookmark;
   final int likeCount;
   final String ownerId;
 
@@ -15,6 +16,7 @@ class PostEntity {
     required this.url,
     required this.time,
     required this.like,
+    required this.bookmark,
     required this.likeCount,
     required this.ownerId,
   });

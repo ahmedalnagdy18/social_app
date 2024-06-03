@@ -7,11 +7,13 @@ part 'posts_state.dart';
 
 class PostsCubit extends Cubit<PostsState> {
   PostsCubit({
+    required this.bookmarkPostUseCase,
     required this.likePostUsecase,
     required this.getAllPostsUsecase,
   }) : super(TimelineInitial());
   final GetPostsUseCase getAllPostsUsecase;
   final LikePostUseCase likePostUsecase;
+  final BookmarkPostUseCase bookmarkPostUseCase;
 
   void getAllPosts() async {
     emit(LoadingAllPosts());
@@ -29,6 +31,7 @@ class PostsCubit extends Cubit<PostsState> {
                     username: doc.username,
                     likeCount: doc.likeCount,
                     ownerId: doc.ownerId,
+                    bookmark: doc.bookmark,
                   ))
               .toList();
           emit(SuccessAllPosts(posts: posts));
@@ -53,6 +56,14 @@ class PostsCubit extends Cubit<PostsState> {
   void likePost(String postId, String userId, bool likeStatus) async {
     try {
       await likePostUsecase.call(postId, userId, likeStatus);
+    } catch (e) {
+      // Handle error
+    }
+  }
+
+  void bookmarkPost(String postId, String userId, bool bookmarkStatus) async {
+    try {
+      await bookmarkPostUseCase.call(postId, userId, bookmarkStatus);
     } catch (e) {
       // Handle error
     }

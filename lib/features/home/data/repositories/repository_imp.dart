@@ -46,4 +46,22 @@ class TimelineRepositoryImpl implements TimelineRepository {
       'likeCount': likes.length,
     });
   }
+
+  @override
+  Future<void> bookmark(String postId, String userId, bool bookmark) async {
+    final postRef = FirebaseFirestore.instance.collection('posts').doc(postId);
+    final postSnapshot = await postRef.get();
+    final List<String> bookmarks =
+        List<String>.from(postSnapshot.data()?['bookmarks'] ?? []);
+
+    if (bookmark) {
+      bookmarks.add(userId);
+    } else {
+      bookmarks.remove(userId);
+    }
+
+    await postRef.update({
+      'bookmarks': bookmarks,
+    });
+  }
 }

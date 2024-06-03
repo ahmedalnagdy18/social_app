@@ -109,7 +109,7 @@ class StoryDetailPageState extends State<StoryDetailPage>
                               padding: EdgeInsets.zero,
                               color: Colors.white,
                               icon: const Icon(Icons.more_horiz,
-                                  color: Colors.black),
+                                  color: Colors.white),
                               elevation: 10,
                               itemBuilder: (context) => [
                                 PopupMenuItem(
@@ -124,7 +124,7 @@ class StoryDetailPageState extends State<StoryDetailPage>
                               },
                               icon: const Icon(
                                 Icons.close,
-                                color: Colors.black,
+                                color: Colors.white,
                               ))
                         ],
                       );
