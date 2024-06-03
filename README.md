@@ -33,11 +33,9 @@ This Social App is developed using the Firebase platform and the Flutter framewo
   <tr>
     <td><img src="https://github.com/ahmedalnagdy18/social_app/assets/155566798/90050779-4f57-4bbc-a56f-e64bec72ff87" alt="Screenshot_1716803741" width="200"/></td>
     <td><img src="https://github.com/ahmedalnagdy18/social_app/assets/155566798/e5a3d3d7-5acc-41e2-b5f4-c143ec400afd" alt="Screenshot_1716803788" width="200"/></td>
-  </tr>
-    <tr>
     <td><img src="https://github.com/ahmedalnagdy18/social_app/assets/155566798/4eafd297-6b71-464f-854f-1ce75cb40b86" alt="Screenshot_1717414610" width="200"/></td>
     <td><img src="https://github.com/ahmedalnagdy18/social_app/assets/155566798/d136a2d4-d52c-43e6-a071-1611cd33617c" alt="Screenshot_1717414619" width="200"/></td>
-  </tr>
+
 </table>
 
 Feel free to explore the app and its features, and don't hesitate to contribute or provide feedback.
